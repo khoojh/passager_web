@@ -4,7 +4,10 @@ import React, { Component } from 'react';
 class Header extends Component {
     render() {
         return (
-            <h1 className="container">Welcome to Passager!</h1>
+            <div className="jumbotron">
+                <h1 className="display-4">Welcome to Passager!</h1>
+                <p className="lead">Share your favorite passages here!</p>
+            </div>
         );
     }
 }
