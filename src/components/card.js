@@ -6,9 +6,13 @@ class Card extends Component {
         return (
             <div className={"card " + style.passagecard} style={{width: "18rem"}}>
                 <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                    <h5 className="card-title">{this.props.passage.author}</h5>
+                    <h6 className="card-title">{this.props.passage.book}</h6>
+                    <p className="card-text">{this.props.passage.content}</p>
+                    <div className="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" className="btn btn-primary">Edit</button>
+                        <button type="button" className="btn btn-primary">Delete</button>
+                    </div>
                 </div>
             </div>
         );
