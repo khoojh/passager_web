@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header from "./components/header.js";
-import Card from "./components/card.js";
-import Footer from "./components/footer.js";
+import Header from "../header.js";
+import Card from "../card.js";
+import Footer from "../footer.js";
 import { connect } from 'react-redux';
-import { fetchPassages } from "./redux/passages/action.js";
+import { fetchPassages } from "../../redux/passages/action.js";
 
-class App extends Component {
+class Home extends Component {
 
     componentWillMount() {
         this.props.fetchPassages();
@@ -33,4 +33,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { fetchPassages })(App);
+export default connect(mapStateToProps, { fetchPassages })(Home);

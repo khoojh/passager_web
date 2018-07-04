@@ -6,7 +6,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger'
 import reducer from './redux/reducer';
-import App from "./app.js";
+import Home from "./components/home/home.js";
+import About from "./components/about/about.js";
 import Navbar from "./components/navbar/navbar.js";
 import history from './history';
 
@@ -25,8 +26,8 @@ ReactDOM.render(
             <div>
                 <Navbar/>
                 <Switch>
-                    <Route exact path="/" component={App}/>
-                    <Route path="/noob" component={App}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/about" component={About}/>
                 </Switch>
             </div>
         </Router>
