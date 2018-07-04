@@ -35,5 +35,19 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname),
+    // serve index.html in place of 404 responses to allow HTML5 history
+    historyApiFallback: true
+  },
   plugins: [htmlPlugin]
+  // devServer: {
+  //     contentBase: path.join(__dirname),
+  //     devtool: 'eval',
+  //     hot: true,
+  //     inline: true,
+  //     port: 3000,
+  //     outputPath: buildPath,
+  //     historyApiFallback: true
+  // }
 };
