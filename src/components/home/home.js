@@ -20,7 +20,7 @@ class Home extends Component {
         this.props.fetchPassages();
     }
 
-    handleClickAddPassage = () => {
+    handleClickAddPassage() {
         let { addAuthor, addBook, addContent } = this.state;
         // e.preventDefault();
         this.props.addPassage(addAuthor, addBook, addContent);
