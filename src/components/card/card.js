@@ -15,6 +15,15 @@ class Card extends Component {
         };
     }
 
+    handleClickEditPassage() {
+        let { editAuthor, editBook, editContent } = this.state;
+        this.props.editPassage(editAuthor, editBook, editContent, this.props.passage.id);
+    }
+
+    handleClickDeletePassage() {
+        this.props.deletePassage(this.props.passage.id);
+    }
+
     renderModal() {
         return (
             <div className="modal fade" id="cardModal" tabIndex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
@@ -28,26 +37,42 @@ class Card extends Component {
                         </div>
                         {
                             this.state.editMode?
-                            <form>
+                            <div>
                                 <div className="modal-body">
                                     <div className="form-group">
                                         <label htmlFor="authorInput">Author</label>
-                                        <input type="text" className="form-control" id="authorInput" aria-describedby="authorInput" placeholder="Enter author name"/>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="authorInput"
+                                            aria-describedby="authorInput"
+                                            placeholder="Enter author name"
+                                            onChange={(value)=>{this.setState({ editAuthor: value.target.value })}}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="bookInput">Book</label>
-                                        <input type="text" className="form-control" id="bookInput" placeholder="Enter book name"/>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="bookInput"
+                                            placeholder="Enter book name"
+                                            onChange={(value)=>{this.setState({ editBook: value.target.value })}}/>
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="contentInput">Book</label>
-                                        <textarea type="text" className="form-control" id="contentInput" placeholder="Enter content"/>
+                                        <label htmlFor="contentInput">Content</label>
+                                        <textarea
+                                            type="text"
+                                            className="form-control"
+                                            id="contentInput"
+                                            placeholder="Enter content"
+                                            onChange={(value)=>{this.setState({ editContent: value.target.value })}}/>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" onClick={()=>{this.setState({ editMode: false })}}>Cancel</button>
-                                    <button type="submit" className="btn btn-primary">Save</button>
+                                    <button type="submit" className="btn btn-primary" onClick={()=>{this.handleClickEditPassage()}}>Save</button>
                                 </div>
-                            </form> :
+                            </div> :
                             <div>
                                 <div className="modal-body">
                                     {this.props.passage.content}
@@ -55,7 +80,7 @@ class Card extends Component {
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="button" className="btn btn-primary" onClick={()=>{this.setState({ editMode: true })}}>Edit</button>
-                                    <button type="button" className="btn btn-primary">Delete</button>
+                                    <button type="button" className="btn btn-primary" onClick={()=>{this.handleClickDeletePassage()}}>Delete</button>
                                 </div>
                             </div>
                         }
@@ -78,7 +103,7 @@ class Card extends Component {
                         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#cardModal">
                           View
                         </button>
-                        <button type="button" className="btn btn-primary">Delete</button>
+                        <button type="button" className="btn btn-primary" onClick={()=>{this.handleClickDeletePassage()}}>Delete</button>
                     </div>
                 </div>
             </div>

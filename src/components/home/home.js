@@ -38,7 +38,7 @@ class Home extends Component {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form>
+                            <div>
                                 <div className="modal-body">
                                     <div className="form-group">
                                         <label htmlFor="authorInput">Author</label>
@@ -73,7 +73,7 @@ class Home extends Component {
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <button type="submit" className="btn btn-primary" onClick={()=>{this.handleClickAddPassage()}}>Add</button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

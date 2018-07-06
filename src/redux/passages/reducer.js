@@ -14,12 +14,18 @@ export default function(state=initialState, action) {
         case PASSAGES_FETCH:
             return { ...state, passages: action.payload };
         case PASSAGES_ADD:
-            return { ...state, passages: passages.push(action.payload) };
+            var newPassages = state.passages.slice();
+            newPassages.push(action.payload)
+            return { ...state, passages: newPassages };
         case PASSAGES_EDIT:
-            return { ...state, passages: passages.push(action.payload) };
+            var newPassages = [];
+            state.passages.forEach((passage) => {
+                passage.id === action.payload.id ? newPassages.push(action.payload) : newPassages.push(passage)
+            });
+            return { ...state, passages: newPassages };
         case PASSAGES_DELETE :
-            return { ...state, passages: passages.filter((passage) => {
-                passage.id !== action.payload.id
+            return { ...state, passages: state.passages.filter((passage) => {
+                return passage.id !== action.payload
             })};
     }
 

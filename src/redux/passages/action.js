@@ -22,7 +22,6 @@ export function fetchPassages() {
 }
 
 export function addPassage(author, book, content) {
-    console.log("CALLED", author, book, content)
     return (dispatch) => {
         return instance.post(
             `api/passages/`,
@@ -42,14 +41,15 @@ export function addPassage(author, book, content) {
     }
 }
 
-export function editPassage(author, book, content) {
+export function editPassage(author, book, content, id) {
     return (dispatch) => {
         return instance.patch(
             `api/passages/${id}`,
             {
                 author,
                 book,
-                content
+                content,
+                id
             }
         ).then((response) => {
             dispatch({
@@ -68,8 +68,8 @@ export function deletePassage(id) {
             `api/passages/${id}`
         ).then((response) => {
             dispatch({
-                type: PASSAGES_ADD,
-                payload: response.data
+                type: PASSAGES_DELETE,
+                payload: id
             });
         }).catch((error) => {
             console.log("ERROR", error);
