@@ -11,7 +11,7 @@ class DeleteButton extends Component {
 
     renderDeleteModal() {
         return (
-            <div className="modal fade" id={"cardModal" + this.props.passage.id} tabIndex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div className="modal fade" id={"deleteModal" + this.props.passage.id} tabIndex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -47,10 +47,4 @@ class DeleteButton extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        passages: state.passages.passages
-    };
-}
-
-export default connect(mapStateToProps, actions)(DeleteButton);
+export default connect(null, actions)(DeleteButton);
