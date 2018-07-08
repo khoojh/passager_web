@@ -69,7 +69,7 @@ export function deletePassage(id) {
         ).then((response) => {
             dispatch({
                 type: PASSAGES_DELETE,
-                payload: id
+                payload: response.data.id
             });
         }).catch((error) => {
             console.log("ERROR", error);

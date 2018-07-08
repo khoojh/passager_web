@@ -24,9 +24,9 @@ class Card extends Component {
         this.props.deletePassage(this.props.passage.id);
     }
 
-    renderModal() {
+    renderCardModal() {
         return (
-            <div className="modal fade" id="cardModal" tabIndex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div className="modal fade" id={"cardModal" + this.props.passage.id} tabIndex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -98,10 +98,10 @@ class Card extends Component {
                     <h5 className="card-title">{this.props.passage.author}</h5>
                     <h6 className="card-title">{this.props.passage.book}</h6>
                     <p className="card-text">{this.props.passage.content}</p>
-                    {this.renderModal()}
+                    {this.renderCardModal()}
                     <div className="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#cardModal">
-                          View
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target={"#cardModal" + this.props.passage.id}>
+                            View
                         </button>
                         <button type="button" className="btn btn-primary" onClick={()=>{this.handleClickDeletePassage()}}>Delete</button>
                     </div>
