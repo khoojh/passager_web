@@ -1,6 +1,7 @@
 # passager_web
 
 Front end for a simple website to share your favorite passages!
+See the API for this project [here](https://github.com/khoojh/passager_api).
 
 ## Getting Started
 
