@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-// import style from "./card.css";
-// import { connect } from 'react-redux';
-// import * as actions from "../../redux/passages/action.js";
+import PropTypes from 'prop-types';
 
 class ConfirmationModal extends Component {
 
-    // handleClickDeletePassage() {
-    //     this.props.deletePassage(this.props.passage.id);
-    // }
-
     render() {
         return (
-            <div className="modal fade" id={"confirmationModal" + this.props.modalID} tabIndex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div className="modal fade" id={this.props.modalID} tabIndex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -26,7 +20,7 @@ class ConfirmationModal extends Component {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
-                                <button type="button" className="btn btn-primary" onClick={()=>{this.handleClickDeletePassage()}}>Yes</button>
+                                <button type="button" className="btn btn-info" data-dismiss="modal" onClick={()=>{this.props.handleSubmit()}}>Yes</button>
                             </div>
                         </div>
                     </div>
@@ -36,13 +30,11 @@ class ConfirmationModal extends Component {
     }
 }
 
-//PROPTYPES
-
-//params:
-//Title
-//Message
-//ModalID
-//Function to retreat previous modal
-//Function to execute upon confirmation
+ConfirmationModal.propTypes = {
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    modalID: PropTypes.string.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+};
 
 export default ConfirmationModal;

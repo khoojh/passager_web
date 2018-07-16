@@ -4,6 +4,7 @@ import Card from "../card/card.js";
 import Footer from "../footer/footer.js";
 import { connect } from 'react-redux';
 import * as actions from "../../redux/passages/action.js";
+import style from "./home.css";
 
 class Home extends Component {
 
@@ -71,14 +72,14 @@ class Home extends Component {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" className="btn btn-primary" onClick={()=>{this.handleClickAddPassage()}}>Add</button>
+                                    <button type="submit" className="btn btn-info" onClick={()=>{this.handleClickAddPassage()}}>Add</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#addModal">
-                  Add
+                <button type="button" className={"btn btn-info " + style.addPassageBtn} data-toggle="modal" data-target="#addModal">
+                  Add a passage
                 </button>
             </div>
         );
