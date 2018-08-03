@@ -8,17 +8,12 @@ import logger from 'redux-logger'
 import reducer from './redux/reducer';
 import Home from "./components/home/home.js";
 import About from "./components/about/about.js";
+import Signin from "./components/signin/signin.js"
+import Signup from "./components/signup/signup.js"
 import Navbar from "./components/navbar/navbar.js";
 import history from './history';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
-
-// ReactDOM.render(
-//     <Provider store={store}>
-//         <App />
-//     </Provider>,
-//     document.getElementById('index')
-// );
 
 ReactDOM.render(
     <Provider store={store}>
@@ -28,6 +23,8 @@ ReactDOM.render(
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route path="/about" component={About}/>
+                    <Route path="/signin" component={Signin}/>
+                    <Route path="/signup" component={Signup}/>
                 </Switch>
             </div>
         </Router>
