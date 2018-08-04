@@ -3,31 +3,25 @@ import Header from "../header/header.js";
 import Card from "../card/card.js";
 import Footer from "../footer/footer.js";
 import AddButton from "./addbutton.js";
+import RandomizeButton from "./randomizebutton.js";
+import SideNavbar from "../sidenavbar/sidenavbar.js";
 import { connect } from 'react-redux';
 import * as actions from "../../redux/passages/action.js";
 import style from "./home.css";
 
 class Home extends Component {
 
-    componentWillMount() {
-        this.props.fetchPassages();
+    constructor(props) {
+        super(props);
+        this.state = {
+            displayPassage: null,
+            passages: [] //test
+        };
+        this.spacebarRandomize = this.spacebarRandomize.bind(this);
     }
 
-    // {/*}<div className="container">
-    //     <Header />
-    //     <div className="container-fluid">
-    //         <div className={style.display}>
-    //             Five million chinese
-    //         </div>
-    //         <AddButton />
-    //         {this.props.passages.map((passage, i) => {
-    //             return <Card passage={passage} key={i}/>
-    //         })}
-    //     </div>
-    //     <Footer />
-    // </div>*/}
-
-    render() {
+    componentWillMount() {
+        this.props.fetchPassages();
         var passages = [
             {
                 "author": "Friedrich Nietzsche",
@@ -79,12 +73,44 @@ class Home extends Component {
             }
         ]
         var passage = passages[Math.floor(Math.random()*passages.length)];
+        this.setState({ displayPassage: passage });
+        this.setState({ passages: passages });
+    }
+
+    handleRandomizeSubmit(passage) {
+        this.setState({ displayPassage: passage });
+    }
+
+    spacebarRandomize(event) {
+        if(event.keyCode === 32) {
+            event.preventDefault();
+            var { passages } = this.state;
+            var passage = passages[Math.floor(Math.random()*passages.length)];
+            this.setState({ displayPassage: passage });
+        }
+    }
+    componentDidMount(){
+        document.addEventListener("keydown", this.spacebarRandomize, false);
+    }
+    componentWillUnmount(){
+        document.removeEventListener("keydown", this.spacebarRandomize, false);
+    }
+
+    render() {
+        var passage = this.state.displayPassage;
         return (
-            <div className={"container-fluid " + style.display}>
-                <div className={style.display_div}>
-                    <h2 className={style.display_content}>{passage.content}</h2>
-                    <h4 className={style.display_source}>{passage.author}, {passage.book}</h4>
+            <div>
+                <div className={"container-fluid " + style.display}
+                    onKeyPress={()=>{this.handleKeyPress()}}>
+                    <div className={style.display_div}>
+                        <h2 className={style.display_content}>{passage.content}</h2>
+                        <h4 className={style.display_source}>{passage.author}, {passage.book}</h4>
+                    </div>
                 </div>
+                <RandomizeButton
+                    passages={this.state.passages}
+                    handleSubmit={(passage) => this.handleRandomizeSubmit(passage)}
+                    />
             </div>
         );
     }
