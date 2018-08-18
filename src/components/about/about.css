@@ -1,8 +1,8 @@
-.display {
+.about {
 	width: 100vw;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 	color: #fff;
 	background: linear-gradient(-45deg, #000000, #24A2B7, #ffffff);
 	background-size: 500% 500%;
@@ -47,47 +47,34 @@
 	}
 }
 
-.display_div {
-    width: 70%;
+.about_title {
+	font-size: 50px;
+	font-weight: lighter;
+	text-align: center;
+	line-height: 200px;
+}
+
+.about_div {
+    width: 90%;
     margin: auto;
-    padding: 90px 0;
+    padding: 10px 0;
     font-family: "Courier New", Courier, monospace;
+	font-size: 20px;
 }
 
-.display_content {
-    /* padding-top: 30px; */
-}
-
-.display_source {
+.about_source {
     padding-top: 30px;
     font-style: italic;
+	font-size: 30px;
 }
 
-.randomizeBtn {
-    color: white;
-    background-color: #24A2B7;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-}
-
-.tooltiptext {
-    visibility: hidden;
-    width: 210px;
-    bottom: 5%;
-    left: 50%;
-    margin-left: -105px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: fixed;
-    z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+.about_text {
+	width: 90%;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	/* padding: 10px 0; */
+	font-size: 30px;
+	font-weight: lighter;
+	line-height: 60px;
 }

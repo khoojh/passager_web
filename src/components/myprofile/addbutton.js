@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from "../../redux/passages/action.js";
-import style from "./home.css";
+import style from "./myprofile.css";
 
 class AddButton extends Component {
 

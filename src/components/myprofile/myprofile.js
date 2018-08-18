@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import RandomizeButton from "./randomizebutton.js";
-// import SideNavbar from "../sidenavbar/sidenavbar.js";
 import { connect } from 'react-redux';
+import InfoTable from './infotable.js';
+import AddButton from "./addbutton.js";
+import Card from "../card/card.js";
+import style from "./myprofile.css";
 import * as actions from "../../redux/passages/action.js";
-import style from "./home.css";
+import { FaUserEdit } from 'react-icons/fa';
 
-class Home extends Component {
+class MyProfile extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            displayPassage: null,
-            passages: [] //test
+            passages: [], //seed
+            editUsername: false
         };
-        this.spacebarRandomize = this.spacebarRandomize.bind(this);
     }
 
     componentWillMount() {
@@ -68,45 +69,19 @@ class Home extends Component {
                 "content": "\"Every one of us is losing something precious to us,\", he says after the phone stops ringing. \"Lost opportunities, lost possibilities, feelings we can never get back again. That's part of what it means to be alive. But inside our heads—at least that's where I imagine it—there's a little room where we store those memories. A room like the stacks in this library. And to understand the workings of our own heart we have to keep on making new reference cards. We have to dust things off every once in a while, let in fresh air, change the water in the flower vases. In other words, you'll live forever in your own private library.\""
             }
         ]
-        var passage = passages[Math.floor(Math.random()*passages.length)];
-        this.setState({ displayPassage: passage });
         this.setState({ passages: passages });
     }
 
-    handleRandomizeSubmit(passage) {
-        this.setState({ displayPassage: passage });
-    }
-
-    spacebarRandomize(event) {
-        if(event.keyCode === 32) {
-            event.preventDefault();
-            var { passages } = this.state;
-            var passage = passages[Math.floor(Math.random()*passages.length)];
-            this.setState({ displayPassage: passage });
-        }
-    }
-    componentDidMount(){
-        document.addEventListener("keydown", this.spacebarRandomize, false);
-    }
-    componentWillUnmount(){
-        document.removeEventListener("keydown", this.spacebarRandomize, false);
-    }
-
     render() {
-        var passage = this.state.displayPassage;
         return (
-            <div>
-                <div className={"container-fluid " + style.display}
-                    onKeyPress={()=>{this.handleKeyPress()}}>
-                    <div className={style.display_div}>
-                        <h2 className={style.display_content}>{passage.content}</h2>
-                        <h4 className={style.display_source}>― {passage.author}, {passage.book}</h4>
-                    </div>
-                </div>
-                <RandomizeButton
-                    passages={this.state.passages}
-                    handleSubmit={(passage) => this.handleRandomizeSubmit(passage)}
-                    />
+            <div className={"container-fluid " + style.myprofile}>
+                <div className={style.myprofile_title}>My Profile</div>
+                <InfoTable />
+                {/*}<div className="container-fluid">
+                    {this.state.passages.map((passage, i) => {
+                        return <Card passage={passage} key={i}/>
+                    })}
+                </div>*/}
             </div>
         );
     }
@@ -118,4 +93,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, actions)(Home);
+export default connect(mapStateToProps, actions)(MyProfile);

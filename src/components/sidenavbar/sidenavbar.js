@@ -13,9 +13,6 @@ class SideNavbar extends Component {
                     <a href="#">Clients</a>
                     <a href="#">Contact</a>
                 </div>
-
-                <h2>Animated Sidenav Example</h2>
-                <p>Click on the element below to open the side navigation menu.</p>
                 <span onClick="openNav()">&#9776</span>
             </div>
         );

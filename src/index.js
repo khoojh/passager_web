@@ -11,6 +11,7 @@ import About from "./components/about/about.js";
 import Signin from "./components/signin/signin.js"
 import Signup from "./components/signup/signup.js"
 import Navbar from "./components/navbar/navbar.js";
+import MyProfile from "./components/myprofile/myprofile.js";
 import history from './history';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -23,6 +24,7 @@ ReactDOM.render(
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route path="/about" component={About}/>
+                    <Route path="/myprofile" component={MyProfile}/>
                     <Route path="/signin" component={Signin}/>
                     <Route path="/signup" component={Signup}/>
                 </Switch>

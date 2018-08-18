@@ -1,0 +1,95 @@
+.myprofile {
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	color: #fff;
+	background: linear-gradient(-45deg, #000000, #24A2B7, #ffffff);
+	background-size: 500% 500%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+.myprofile_title {
+	font-size: 50px;
+	font-weight: lighter;
+	text-align: center;
+	line-height: 200px;
+}
+
+.info_table {
+	width: 500px;
+	margin: auto;
+}
+
+.col2 {
+	min-width: 200px;
+}
+
+.col3 {
+	color: transparent;
+}
+
+.col1:hover~.col3 {
+	color: inherit;
+}
+
+.col2:hover~.col3 {
+	color: inherit;
+}
+
+.col3:hover {
+	color: inherit;
+}
+
+.user_edit {
+	cursor: pointer;
+}
+
+.infoTableInput {
+	height: 23px;
+	background: transparent;
+	border: none;
+	color: inherit;
+}
+
+.infoTableInput:focus {
+	outline: none;
+}

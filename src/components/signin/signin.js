@@ -18,7 +18,7 @@ class Signin extends Component {
                         <input type="password" className={" " + style.signin_input} placeholder="Password" />
                     </div>
                     <button type="submit" className={"btn btn-info " + style.signin_btn}>Sign in</button>
-                    </form>
+                </form>
             </div>
         );
     }
